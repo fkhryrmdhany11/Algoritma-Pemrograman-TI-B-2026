@@ -67,7 +67,7 @@ class Mahasiswa:
     return self.__nilai
 
   def set_nilai(self, nilai):
-    if nilai > 0:
+    if nilai > 0 and nilai <= 100:
       self.__nilai = nilai
     else:
       print("Nilai tidak valid")
