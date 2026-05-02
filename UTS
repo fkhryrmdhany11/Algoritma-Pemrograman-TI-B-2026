@@ -1,0 +1,44 @@
+def update_history(history, kata, batas=5):
+    if kata in history:
+        history.remove(kata)
+    history.insert(0, kata)
+
+    if len(history) > batas:
+        history.pop()
+
+
+def cari_dalam_list(data, dicari):
+    hasil = []
+
+    for item in data:
+        if dicari.lower() in item.lower():
+            hasil.append(item)
+
+    if hasil:
+        return hasil
+    else:
+        return data
+
+
+data = ["Apel", "Jeruk", "Mangga", "Anggur", "Pisang"]
+history = []
+
+while True:
+    dicari = input("Masukkan kata yang dicari (ketik 'exit' untuk keluar): ")
+
+    if dicari.lower() == "exit":
+        break
+
+    update_history(history, dicari)
+
+    hasil = cari_dalam_list(data, dicari)
+
+    if hasil != data or any(dicari.lower() in item.lower() for item in data):
+        print("Data yang cocok:")
+    else:
+        print("Tidak ada yang cocok, semua data ditampilkan:")
+
+    for item in hasil:
+        print("-", item)
+
+    print("History pencarian:", history)
